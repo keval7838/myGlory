@@ -1,10 +1,18 @@
-# Node.js dependencies
+# Dependencies
 node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-.pnpm-debug.log*
+.yarn/
+.yarnrc.yml
+.pnp.*
+.pnp.js
+.pnp.cjs
+.pnp.loader.mjs
+
+# Yarn logs & cache
+yarn-error.log
+.yarn/cache/
+.yarn/unplugged/
+.yarn/build-state.yml
+.yarn/install-state.gz
 
 # Production build
 build/
@@ -13,8 +21,6 @@ dist/
 # Logs
 logs/
 *.log
-yarn.lock
-pnpm-lock.yaml
 
 # Environment variables
 .env
