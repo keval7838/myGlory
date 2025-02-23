@@ -20,12 +20,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
+          cache: 'yarn'  # Enables caching for Yarn dependencies
 
       - name: Install dependencies
-        run: npm install
+        run: yarn install --frozen-lockfile  # Ensures only committed dependencies are installed
 
       - name: Run tests
-        run: npm test
+        run: yarn test
 
       - name: Build project
-        run: npm run build
+        run: yarn build
