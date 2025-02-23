@@ -26,13 +26,13 @@ const Home = () => {
             <a href="#home">{t("Home")}</a>
           </li>
           <li>
-            <a href="#home">{t("About")}</a>
+            <a href="#about">{t("About")}</a>
           </li>
           <li>
-            <a href="#home">{t("Projects")}</a>
+            <a href="#projects">{t("Projects")}</a>
           </li>
           <li>
-            <a href="#home">{t("Contact")}</a>
+            <a href="#contact">{t("Contact")}</a>
           </li>
         </ul>
       </nav>
