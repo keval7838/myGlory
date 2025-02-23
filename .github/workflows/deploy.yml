@@ -19,15 +19,11 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20  # 🔹 Upgrading to Node.js 20
           cache: 'yarn'
 
-      - name: Check for yarn.lock file
-        run: |
-          if [ ! -f yarn.lock ]; then
-            echo "❌ yarn.lock file is missing! Please add it to your repository."
-            exit 1
-          fi
+      - name: Remove package-lock.json (if exists)
+        run: rm -f package-lock.json  # 🔹 Prevents npm conflicts
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
