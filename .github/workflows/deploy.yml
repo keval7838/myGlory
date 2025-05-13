@@ -1,0 +1,35 @@
+name: React CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20  # 🔹 Upgrading to Node.js 20
+          cache: 'yarn'
+
+      - name: Remove package-lock.json (if exists)
+        run: rm -f package-lock.json  # 🔹 Prevents npm conflicts
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Run tests
+        run: yarn test
+
+      - name: Build project
+        run: yarn build
