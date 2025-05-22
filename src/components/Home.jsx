@@ -2,10 +2,11 @@
 import "react";
 import "./Home.css";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const { t, i18n } = useTranslation();
-
+  const navigate = useNavigate();
   return (
     <div className="home-container">
       <nav className="navbar">
@@ -32,7 +33,7 @@ const Home = () => {
             <a href="#projects">{t("Projects")}</a>
           </li>
           <li>
-            <a href="#contact">{t("Contact")}</a>
+            <a onClick={() => navigate("/contact")}>{t("Contact")}</a>
           </li>
         </ul>
       </nav>
@@ -72,7 +73,12 @@ const Home = () => {
         <div className="projects-grid">
           {[1, 2, 3].map((project) => (
             <div key={project} className="project-card">
-              <div className="project-image"></div>
+              <div className="project-image">
+                <img
+                  src="./src/assets/1.jpg"
+                  alt="Description of your image"
+                ></img>
+              </div>
               <h3>
                 {t("Project")} {project}
               </h3>
