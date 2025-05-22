@@ -3,6 +3,7 @@ import "react";
 import "./Home.css";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import myImage from "../assets/1.jpg";
 
 const Home = () => {
   const { t, i18n } = useTranslation();
@@ -74,10 +75,7 @@ const Home = () => {
           {[1, 2, 3].map((project) => (
             <div key={project} className="project-card">
               <div className="project-image">
-                <img
-                  src="./src/assets/1.jpg"
-                  alt="Description of your image"
-                ></img>
+                <img src={myImage} alt="Description of your image"></img>
               </div>
               <h3>
                 {t("Project")} {project}
