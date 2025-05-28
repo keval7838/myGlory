@@ -62,12 +62,70 @@ body {
 }
 
 /* Hero Section */
-.hero-section {
+.plan-mode{
+ 
+  width: 100%;
   height: 100vh;
+ z-index: 0;
+}
+.plan-mode img{
+  width: 20%;
+  height: 20%;
+  position: absolute;
+  top: 40%; /* Adjust height here */
+  left: -150px; /* Start off-screen */
+  width: 100px;
+  z-index: 1;
+  animation: flyRight 6s linear infinite;
+}
+
+.plan-mode-2 img{
+  width: 20%;
+  height: 20%;
+  position: absolute;
+  top: 60%; /* Adjust height here */
+  left: -150px; /* Start off-screen */
+  width: 100px;
+  z-index: 1;
+  animation: flyRight2 15s linear infinite;
+}
+
+@keyframes flyRight {
+  0% {
+    left: -150px;
+    transform: rotate(0deg);
+  }
+  100% {
+    left: 110%;
+    transform: rotate(-15deg);
+    top: 15%; /* Slight tilt for realism */
+  }
+}
+@keyframes flyRight2 {
+  0% {
+    left: -150px;
+    transform: rotate(0deg);
+  }
+  50% {
+    left: 50%;
+    transform: rotate(20deg);
+    top: 65%; /* Slight tilt for realism */
+  }
+  100% {
+    left: 110%;
+    transform: rotate(-50deg);
+    top: 15%; /* Slight tilt for realism */
+  }
+}
+
+.hero-section {
+  width: 100vw;
+  height: 100%;
   display: flex;
   align-items: center;
   padding: 0 5%;
-  background-color: var(--accent-color);
+  background-image: url('../assets/bg.jpg');
+  background-size: cover;
 }
 
 .hero-content {
@@ -157,7 +215,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  max-width: 1200px;
+  /* max-width: 1200px; */
   margin: 0 auto;
 }
 
@@ -169,15 +227,14 @@ body {
 }
 
 .project-image {
-  height: 200px;
-  background-color: #e5e7eb;
+  height: 250px;
   border-radius: 0.5rem;
   margin-bottom: 1rem;
 }
 .project-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Image will cover the container, cropping if necessary */
+  object-fit: contain; /* Image will cover the container, cropping if necessary */
   object-position: center; /* How the image is aligned within its container */
 }
 

@@ -3,11 +3,47 @@ import "react";
 import "./Home.css";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import myImage from "../assets/1.jpg";
+import pm from "../assets/pm.png";
+import seed from "../assets/seed.png";
+import moms from "../assets/moms.png";
+import rel from "../assets/r.png";
+import ap from "../assets/ap.webp";
 
 const Home = () => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
+  const projectSkills = [
+    "React Native",
+    "React Js",
+    "JavaScript",
+    "Node.js",
+    "CSS",
+    "HTML",
+    "Git",
+  ];
+
+  const projects = [
+    {
+      name: "PMPeople | PPM Tool for Seamless Project Collaboration",
+      des: "Developed a professional project collaboration tool with role-based access control, supporting roles such as Project Manager, Team Member, Requester, Sponsor, Stakeholder, and Assistant Project Manager.",
+      img: pm,
+    },
+    {
+      name: "SEEDLING | Farm Management Application",
+      des: "Developed a Korean farm management app enabling admins to monitor field performance and users to manage plot allocations and transfers, with Google Maps integration for geolocation-based land mapping and Firebase Cloud Messaging for time-based farm activity reminders",
+      img: seed,
+    },
+    {
+      name: "RELISTIFY | Video Creation Application",
+      des: "Developed a video editing application that allows users to create, merge, and enhance short videos with filters, offering free basic features and advanced tools through a premium subscription model",
+      img: rel,
+    },
+    {
+      name: "MomsBeyond | Social Networking App for Mothers",
+      des: "Developed a dedicated social networking platform for mothers to connect, share experiences, and seek support, featuring content sharing, one-on-one chat, community forums, and a Mombassador program to promote engagement and empowerment among users",
+      img: moms,
+    },
+  ];
   return (
     <div className="home-container">
       <nav className="navbar">
@@ -48,6 +84,12 @@ const Home = () => {
           <p className="description">{t("myDescription")}</p>
           <button className="cta-button">{t("ViewMyWork")}</button>
         </div>
+        <div className="plan-mode">
+          <img src={ap} alt=" image"></img>
+        </div>
+        <div className="plan-mode-2">
+          <img src={ap} alt="image"></img>
+        </div>
       </section>
 
       <section className="about-section" id="about">
@@ -59,31 +101,24 @@ const Home = () => {
           <div className="skills">
             <h3>{t("MySkills")}</h3>
             <div className="skill-tags">
-              <span className="skill-tag">React</span>
-              <span className="skill-tag">JavaScript</span>
-              <span className="skill-tag">Node.js</span>
-              <span className="skill-tag">CSS</span>
-              <span className="skill-tag">HTML</span>
+              {projectSkills.map((skills) => (
+                <span className="skill-tag">{skills}</span>
+              ))}
             </div>
           </div>
         </div>
       </section>
-
+      {/* projects */}
       <section className="projects-section" id="projects">
         <h2>{t("FeaturedProjects")}</h2>
         <div className="projects-grid">
-          {[1, 2, 3].map((project) => (
-            <div key={project} className="project-card">
+          {projects.map((item) => (
+            <div key={item} className="project-card">
               <div className="project-image">
-                <img src={myImage} alt="Description of your image"></img>
+                <img src={item?.img} alt=" image"></img>
               </div>
-              <h3>
-                {t("Project")} {project}
-              </h3>
-              <p>
-                Description of project {project}. Explain the key features and
-                technologies used.
-              </p>
+              <h3>{item?.name}</h3>
+              <p>{item?.des}</p>
               <div className="project-links">
                 <a href="#" className="project-link">
                   {t("viewLive")}
