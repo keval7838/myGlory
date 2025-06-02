@@ -234,7 +234,7 @@ const IronManPortfolio = () => {
                 <div className="contact-card">
                   <Linkedin size={32} className="contact-card-icon" />
                   <h3 className="contact-card-title">LinkedIn</h3>
-                  <p className="contact-card-info">/in/anthony-stark</p>
+                  <p className="contact-card-info">keval patel</p>
                 </div>
               </a>
             </div>
