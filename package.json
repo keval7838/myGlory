@@ -11,14 +11,17 @@
     "preview": "vite preview",
     "test": "echo \"No tests available\" && exit 0",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",    
-    "deploy": "gh-pages -d dist"    
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "framer-motion": "^12.15.0",
     "i18next": "^24.2.2",
+    "lucide-react": "^0.511.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-i18next": "^15.4.1",
+    "react-icons": "^5.5.0",
     "react-router-dom": "^7.2.0"
   },
   "devDependencies": {
