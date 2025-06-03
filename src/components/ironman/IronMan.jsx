@@ -26,28 +26,28 @@ const IronManPortfolio = () => {
       description:
         "Developed a professional project collaboration tool with role-based access control, supporting roles such as Project Manager, Team Member, Requester, Sponsor, Stakeholder, and Assistant Project Manager",
       tech: ["React Native", "Node.js", "MYSQL"],
-      link: "#",
+      link: "https://play.google.com/store/apps/details?id=com.PMPeople&pcampaignid=web_share",
     },
     {
       title: "SEEDLING | Farm Management Application",
       description:
         "Developed a Korean farm management app enabling admins to monitor field performance and users to manage plot allocations and transfers, with Google Maps integration for geolocation-based land mapping and Firebase Cloud Messaging for time-based farm activity reminders",
       tech: ["React Native", "Node.js", "MYSQL"],
-      link: "#",
+      link: "",
     },
     {
       title: "RELISTIFY | Video Creation Application",
       description:
         "Developed a video editing application that allows users to create, merge, and enhance short videos with filters, offering free basic features and advanced tools through a premium subscription model",
       tech: ["React Native", "React Native Firebase"],
-      link: "#",
+      link: "",
     },
     {
       title: "MomsBeyond | Social Networking App for Mothers",
       description:
         "Developed a dedicated social networking platform for mothers to connect, share experiences, and seek support, featuring content sharing, one-on-one chat, community forums, and a Mombassador program to promote engagement and empowerment among users",
       tech: ["React Native", "React Native Firebase"],
-      link: "#",
+      link: "https://play.google.com/store/apps/details?id=com.momsbeyond.wmt.android&pcampaignid=web_share",
     },
   ];
 
@@ -184,7 +184,11 @@ const IronManPortfolio = () => {
                 <div key={index} className="project-card">
                   <div className="project-header">
                     <h3 className="project-title">{project.title}</h3>
-                    <ExternalLink size={20} className="project-link" />
+                    <a href={project.link ? project.link : ""}>
+                      {project?.link && (
+                        <ExternalLink size={20} className="project-link" />
+                      )}
+                    </a>
                   </div>
                   <p className="project-description">{project.description}</p>
                   <div className="tech-tags">
