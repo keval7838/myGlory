@@ -5,16 +5,27 @@ import {
   Github,
   Linkedin,
   ExternalLink,
-  Zap,
   Cpu,
   Shield,
+  MessageSquare,
+  AppleIcon,
+  Apple,
 } from "lucide-react";
 import "./IronMan.css"; // Import the CSS file
 import { t } from "i18next";
+import { FiMenu, FiX } from "react-icons/fi";
+import { BsAndroid } from "react-icons/bs";
+import { FaAppStore } from "react-icons/fa";
+import { BiLogoPlayStore } from "react-icons/bi";
 
 const IronManPortfolio = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   useEffect(() => {
     setIsLoaded(true);
@@ -26,7 +37,13 @@ const IronManPortfolio = () => {
       description:
         "Developed a professional project collaboration tool with role-based access control, supporting roles such as Project Manager, Team Member, Requester, Sponsor, Stakeholder, and Assistant Project Manager",
       tech: ["React Native", "Node.js", "MYSQL"],
-      link: "https://play.google.com/store/apps/details?id=com.PMPeople&pcampaignid=web_share",
+      link: [
+        {
+          android:
+            "https://play.google.com/store/apps/details?id=com.PMPeople&pcampaignid=web_share",
+        },
+        { ios: "https://apps.apple.com/in/app/pmpeople-ppm-ai/id1253865399" },
+      ],
     },
     {
       title: "SEEDLING | Farm Management Application",
@@ -47,7 +64,15 @@ const IronManPortfolio = () => {
       description:
         "Developed a dedicated social networking platform for mothers to connect, share experiences, and seek support, featuring content sharing, one-on-one chat, community forums, and a Mombassador program to promote engagement and empowerment among users",
       tech: ["React Native", "React Native Firebase"],
-      link: "https://play.google.com/store/apps/details?id=com.momsbeyond.wmt.android&pcampaignid=web_share",
+      link: [
+        {
+          android:
+            "https://play.google.com/store/apps/details?id=com.momsbeyond.wmt.android&pcampaignid=web_share",
+        },
+        {
+          ios: "https://apps.apple.com/us/app/momsbeyond-connect-with-moms/id1508975234",
+        },
+      ],
     },
   ];
 
@@ -75,14 +100,14 @@ const IronManPortfolio = () => {
         <div className="particle particle-7"></div>
       </div>
 
-      {/* Navigation */}
       <nav className="navbar">
         <div className="nav-container">
           <a onClick={() => setActiveSection("home")}>
             <div className="nav-logo">MY GLORY</div>
           </a>
 
-          <div className="nav-links">
+          {/* Desktop Links */}
+          <div className="nav-links desktop">
             {["home", "about", "projects", "contact"].map((section) => (
               <button
                 key={section}
@@ -95,8 +120,32 @@ const IronManPortfolio = () => {
               </button>
             ))}
           </div>
+
+          {/* Mobile Menu Icon */}
+          <div className="menu-icon mobile" onClick={toggleMenu}>
+            {isMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+          </div>
         </div>
       </nav>
+
+      {isMenuOpen && (
+        <div className="mobile-menu">
+          {["home", "about", "projects", "contact"].map((section) => (
+            <button
+              key={section}
+              onClick={() => {
+                setActiveSection(section);
+                setIsMenuOpen(false);
+              }}
+              className={`mobile-nav-link ${
+                activeSection === section ? "active" : ""
+              }`}
+            >
+              {section}
+            </button>
+          ))}
+        </div>
+      )}
 
       {/* Hero Section */}
       {activeSection === "home" && (
@@ -107,6 +156,10 @@ const IronManPortfolio = () => {
             </div> */}
             <h1 className="hero-title">{t("myName")}</h1>
             <p className="hero-subtitle">Super • Star • Software • Engineer</p>
+            {/* <p style={{ margin: "30px 100px" }} className="hero-subtitle">
+              Any time you make big plans, you have people questioning what
+              you’re doing.
+            </p> */}
             <div className="hero-buttons">
               <button
                 onClick={() => setActiveSection("projects")}
@@ -184,11 +237,6 @@ const IronManPortfolio = () => {
                 <div key={index} className="project-card">
                   <div className="project-header">
                     <h3 className="project-title">{project.title}</h3>
-                    <a href={project.link ? project.link : ""}>
-                      {project?.link && (
-                        <ExternalLink size={20} className="project-link" />
-                      )}
-                    </a>
                   </div>
                   <p className="project-description">{project.description}</p>
                   <div className="tech-tags">
@@ -198,6 +246,30 @@ const IronManPortfolio = () => {
                       </span>
                     ))}
                   </div>
+                  {project.link && project?.link?.length > 0 && (
+                    <div className="project-links">
+                      {project?.link.map((item, linkIndex) => {
+                        const platform = item?.android ? "Android" : "iOS";
+                        const url = item.android || item.ios;
+                        return (
+                          <a
+                            key={linkIndex}
+                            href={url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="project-link"
+                          >
+                            {platform == "iOS" && (
+                              <BiLogoPlayStore size={30} className="icon" />
+                            )}
+                            {platform !== "iOS" && (
+                              <FaAppStore size={30} className="icon" />
+                            )}
+                          </a>
+                        );
+                      })}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -239,6 +311,17 @@ const IronManPortfolio = () => {
                   <Linkedin size={32} className="contact-card-icon" />
                   <h3 className="contact-card-title">LinkedIn</h3>
                   <p className="contact-card-info">keval patel</p>
+                </div>
+              </a>
+              <a
+                href="https://wa.me/919558077169" // Replace with your actual WhatsApp number
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="contact-card">
+                  <MessageSquare size={32} className="contact-card-icon" />
+                  <h3 className="contact-card-title">WhatsApp</h3>
+                  <p className="contact-card-info">+91 95580 77169</p>
                 </div>
               </a>
             </div>
