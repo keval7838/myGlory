@@ -4,17 +4,13 @@ import {
   Mail,
   Github,
   Linkedin,
-  ExternalLink,
   Cpu,
   Shield,
   MessageSquare,
-  AppleIcon,
-  Apple,
 } from "lucide-react";
 import "./IronMan.css"; // Import the CSS file
 import { t } from "i18next";
 import { FiMenu, FiX } from "react-icons/fi";
-import { BsAndroid } from "react-icons/bs";
 import { FaAppStore } from "react-icons/fa";
 import { BiLogoPlayStore } from "react-icons/bi";
 
@@ -259,10 +255,10 @@ const IronManPortfolio = () => {
                             rel="noopener noreferrer"
                             className="project-link"
                           >
-                            {platform == "iOS" && (
+                            {platform == "Android" && (
                               <BiLogoPlayStore size={30} className="icon" />
                             )}
-                            {platform !== "iOS" && (
+                            {platform == "iOS" && (
                               <FaAppStore size={30} className="icon" />
                             )}
                           </a>
